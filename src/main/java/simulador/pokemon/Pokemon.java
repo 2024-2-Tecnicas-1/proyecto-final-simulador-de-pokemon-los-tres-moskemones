@@ -11,5 +11,35 @@ public class Pokemon {
     this.salud = salud;
     this.ataque = ataque;
   }
-  
+  public String getNombre() {
+    return nombre;
+}
+
+public void setNombre(String nombre) {
+    this.nombre = nombre;
+}
+
+public TipoPokemon getTipo() {
+    return tipo;
+}
+
+public void setTipo(TipoPokemon tipo) {
+    this.tipo = tipo;
+}
+
+public int getSalud() {
+    return salud;
+}
+
+public void setSalud(int salud) {
+    this.salud = salud;
+}
+
+public int getAtaque() {
+    return ataque;
+}
+
+public void setAtaque(int ataque) {
+    this.ataque = ataque;
+}
 }
