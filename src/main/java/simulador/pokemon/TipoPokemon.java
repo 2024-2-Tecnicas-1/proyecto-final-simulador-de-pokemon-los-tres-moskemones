@@ -23,7 +23,7 @@ public class TipoPokemon {
     }
 
     public void setTipoSecundario(String tipoSecundario) {
-        this.tiposecundario = tipoSecundario;
+        this.tipoSecundario = tipoSecundario;
     }
 
 }
