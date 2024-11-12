@@ -11,6 +11,8 @@ public class Pokemon {
     this.salud = salud;
     this.ataque = ataque;
   }
+
+  
   public String getNombre() {
     return nombre;
 }

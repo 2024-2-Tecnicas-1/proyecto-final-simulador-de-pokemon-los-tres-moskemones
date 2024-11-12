@@ -1,5 +1,12 @@
 package simulador.pokemon;
 
 public class TipoPokemon {
-    // TODO: Aquí va tu código
-}
+    public class TipoPokemon {
+        private String tipoPrimario;
+        private String tipoSecundario;
+    
+        public TipoPokemon(String tipoPrimario, String tipoSecundario) {
+            this.tipoPrimario = tipoPrimario;
+            this.tipoSecundario = tipoSecundario;
+        }
+    }
