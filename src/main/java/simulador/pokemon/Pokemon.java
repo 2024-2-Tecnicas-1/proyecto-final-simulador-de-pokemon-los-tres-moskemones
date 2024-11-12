@@ -5,7 +5,7 @@ public class Pokemon {
     private TipoPokemon tipo;
     private int salud;
     private int ataque;
-    
+
   public Pokemon(String nombre, TipoPokemon tipo, int salud,int ataque) {
     this.nombre = nombre;
     this.tipo = tipo;
@@ -22,8 +22,8 @@ public class Pokemon {
         this.nombre = nombre;
     }
 
-    public TipoPokemon getTipo() {
-        return tipo;
+    public String getTipo() {
+        return tipo.toString();
     }
 
     public void setTipo(TipoPokemon tipo) {
@@ -44,5 +44,13 @@ public class Pokemon {
 
     public void setAtaque(int ataque) {
         this.ataque = ataque;
+    }
+
+    public String getTipoPrimario() {
+        return tipo.getTipoPrimario();
+    }
+
+    public String getTipoSecundario() {
+        return tipo.getTipoSecundario();
     }
 }
