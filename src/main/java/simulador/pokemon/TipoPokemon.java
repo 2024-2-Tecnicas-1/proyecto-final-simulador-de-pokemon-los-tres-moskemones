@@ -1,29 +1,31 @@
 package simulador.pokemon;
 
 public class TipoPokemon {
-        private String tipoPrimario;
-        private String tipoSecundario;
-    
-        public TipoPokemon(String tipoPrimario, String tipoSecundario) {
-            this.tipoPrimario = tipoPrimario;
-            this.tipoSecundario = tipoSecundario;
-        }
+    private Tipo tipoPrimario;
+    private Tipo tipoSecundario;
 
-     
-    public String getTipoPrimario() {
-        return tipoPrimario;
-    }
-
-    public void setTipoPrimario(String tipoPrimario) {
+    public TipoPokemon(Tipo tipoPrimario, Tipo tipoSecundario) {
         this.tipoPrimario = tipoPrimario;
-    }
-
-    public String getTipoSecundario() {
-        return tipoSecundario;
-    }
-
-    public void setTipoSecundario(String tipoSecundario) {
         this.tipoSecundario = tipoSecundario;
     }
 
+    public TipoPokemon(Tipo tipoPrimario) {
+        this(tipoPrimario, null);
+    }
+
+    public Tipo getTipoPrimario() {
+        return tipoPrimario;
+    }
+
+    public void setTipoPrimario(Tipo tipoPrimario) {
+        this.tipoPrimario = tipoPrimario;
+    }
+
+    public Tipo getTipoSecundario() {
+        return tipoSecundario;
+    }
+
+    public void setTipoSecundario(Tipo tipoSecundario) {
+        this.tipoSecundario = tipoSecundario;
+    }
 }
