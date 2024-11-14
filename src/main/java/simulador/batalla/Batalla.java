@@ -54,8 +54,7 @@ public class Batalla {
             return 1.0;
         }
         
-        public static void HacerDaño(Pokemon atacante, Pokemon defensor) {
-            // Considerar los tipos primarios y secundarios para ambos Pokémon
+        public static void HacerDaño(Pokemon atacante, Pokemon defensor, int indiceAtaque) {
             double multiplicador = obtenerMultiplicadorDeDaño(
                 atacante.getTipoPrimario(), 
                 atacante.getTipoSecundario(), 
@@ -63,10 +62,8 @@ public class Batalla {
                 defensor.getTipoSecundario()
             );
             
-            // Calcular el daño usando el multiplicador
-            int daño = (int) (atacante.getAtaque() * multiplicador);
+            int daño = (int) (atacante.getTipoAtaques()[indiceAtaque].getDano() * multiplicador);
             
-            // Verificar si el defensor tiene suficiente salud
             if(defensor.getSalud() > daño){
                 defensor.setSalud(defensor.getSalud() - daño);
                 System.out.println("Daño causado: " + daño);

@@ -16,6 +16,7 @@ import simulador.pokemon.Tipo;
 import java.util.Scanner;
 import java.util.ArrayList;
 import simulador.batalla.Batalla;
+import simulador.pokemon.*;
 
 public class Principal {
     private static ArrayList<Entrenador> entrenadores = new ArrayList<>();
@@ -227,6 +228,11 @@ public class Principal {
 
         Pokemon pokemonSeleccionado = pokemones.get(seleccion - 1);
         System.out.println("Se ha seleccionado el Pokémon " + pokemonSeleccionado.getNombre() + " para el entrenador " + entrenador.getNombre());
+
+        // Obtener los atques:
+        Ataque[] ataques = pokemonSeleccionado.getTipoAtaques();
+        // Imprime ataques con sus nombres
+        // El usuario lo selecciona
 
         if (entrenador == entrenador1) {
             pokemon1 = pokemonSeleccionado;
