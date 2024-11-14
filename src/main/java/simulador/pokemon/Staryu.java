@@ -1,8 +1,8 @@
 package simulador.pokemon;
 
 public class Staryu extends Pokemon {
-    public Staryu(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, int exp, int level, int energia) {
-        super("Staryu", Tipo.AGUA, null, 30, 45, 0, 0,0);  
+    public Staryu(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado) {
+        super("Staryu", Tipo.AGUA, null, 30, 45,null);  
     }
 
     @Override

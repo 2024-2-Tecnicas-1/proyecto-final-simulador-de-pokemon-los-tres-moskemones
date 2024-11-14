@@ -6,19 +6,17 @@ public abstract class Pokemon {
     private Tipo tipoSecundario;
     private int salud;
     private int ataque;
-    private int exp;
-    private int level;
-    private int energia;
+    private String estado;
+ 
 
-    public Pokemon(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, int exp, int level,int energia) {
+    public Pokemon(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado) {
         this.nombre = nombre;
         this.tipoPrimario = tipoPrimario;
         this.tipoSecundario = tipoSecundario;
         this.salud = salud;
         this.ataque = ataque;
-        this.exp = exp;
-        this.level = level;
-        this.energia = energia;
+        this.estado = estado;
+ 
     }
 
     public String getNombre() {
@@ -61,27 +59,14 @@ public abstract class Pokemon {
         this.ataque = ataque;
     }
 
-    public int getExp() {
-        return exp;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setExp(int exp) {
-        this.exp = exp;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-    public int getEnergia() {
-        return energia;
-    }
-    public void setEnergia(int energia){
-        this.energia = energia;
-    }
     public abstract void atacar(Pokemon pokemon);
 
 }

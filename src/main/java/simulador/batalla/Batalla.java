@@ -3,8 +3,7 @@ import simulador.pokemon.Tipo;
 import simulador.pokemon.Pokemon;
 public class Batalla {
     
-    public static double obtenerMultiplicador(Tipo tipoAtacante, Tipo tipoDefensor) {
-        // Ejemplo de condiciones para algunos tipos. Puedes ampliar estos casos según sea necesario.
+    public static double obtenerMultiplicadorDeDaño(Tipo tipoAtacante, Tipo tipoDefensor) {
         if (tipoAtacante == Tipo.FUEGO) {
             if (tipoDefensor == Tipo.PLANTA) return 2.0;
             if (tipoDefensor == Tipo.AGUA) return 0.5;
@@ -22,10 +21,18 @@ public class Batalla {
     }
     
     public static void HacerDaño(Pokemon atacante, Pokemon defensor) {
-        double multiplicador = obtenerMultiplicador(atacante.getTipoPrimario(), defensor.getTipoPrimario());
+        double multiplicador = obtenerMultiplicadorDeDaño(atacante.getTipoPrimario(), defensor.getTipoPrimario());
         int daño = (int) (atacante.getAtaque() * multiplicador);
-        defensor.setSalud(defensor.getSalud() - daño);
-        System.out.println("Daño causado: " + daño);
-        System.out.println("Salud restante de " + defensor.getNombre() + ": " + defensor.getSalud());
+        if(defensor.getSalud() > daño){
+            defensor.setSalud(defensor.getSalud() - daño);
+            System.out.println("Daño causado: " + daño);
+            System.out.println("Salud restante de " + defensor.getNombre() + ": " + defensor.getSalud());
+        }
+        else {defensor.setSalud(0);
+            System.out.println(defensor.getNombre()+" ha muerto.");
+
+        }
     }
+
+
 }

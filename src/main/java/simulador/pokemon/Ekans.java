@@ -1,8 +1,8 @@
 package simulador.pokemon;
 
 public class Ekans extends Pokemon {
-    public Ekans(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, int exp, int level, int energia) {
-        super("Ekans", Tipo.VENENO, null, 35, 60, 0, 0,0);  
+    public Ekans(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado) {
+        super("Ekans", Tipo.VENENO, null, 35, 60, null);  
     }
 
     @Override

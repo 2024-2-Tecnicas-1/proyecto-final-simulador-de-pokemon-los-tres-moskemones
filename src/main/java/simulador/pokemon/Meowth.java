@@ -1,8 +1,8 @@
 package simulador.pokemon;
 
 public class Meowth extends Pokemon {
-    public Meowth(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, int exp, int level, int energia) {
-        super("Meowth", Tipo.NORMAL, null, 40, 45, 0, 0,0);  
+    public Meowth(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado) {
+        super("Meowth", Tipo.NORMAL, null, 40, 45, null);  
     }
 
     @Override

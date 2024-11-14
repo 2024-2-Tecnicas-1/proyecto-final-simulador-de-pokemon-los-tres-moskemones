@@ -1,8 +1,8 @@
 package simulador.pokemon;
 
 public class Onix extends Pokemon {
-    public Onix(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, int exp, int level, int energia) {
-        super("Onix", Tipo.ROCA, Tipo.TIERRA, 35, 45, 0, 0,0);  
+    public Onix(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado) {
+        super("Onix", Tipo.ROCA, Tipo.TIERRA, 35, 45, null);  
     }
 
     @Override

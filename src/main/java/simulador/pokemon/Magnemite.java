@@ -1,8 +1,8 @@
 package simulador.pokemon;
 
 public class Magnemite extends Pokemon {
-    public Magnemite(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, int exp, int level, int energia) {
-        super("Magnemite", Tipo.ELECTRICO, Tipo.ACERO, 25, 35, 0, 0,0);  
+    public Magnemite(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado) {
+        super("Magnemite", Tipo.ELECTRICO, Tipo.ACERO, 25, 35, null);  
     }
 
     @Override

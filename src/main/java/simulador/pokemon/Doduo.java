@@ -1,8 +1,8 @@
 package simulador.pokemon;
 
 public class Doduo extends Pokemon {
-    public Doduo(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, int exp, int level, int energia) {
-        super("Doduo", Tipo.NORMAL, null, 35, 85, 0, 0,0);  
+    public Doduo(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado) {
+        super("Doduo", Tipo.NORMAL, null, 35, 85, null);  
     }
 
     @Override

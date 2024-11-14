@@ -1,8 +1,8 @@
 package simulador.pokemon;
 
 public class Abra extends Pokemon {
-    public Abra(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, int exp, int level, int energia) {
-        super("Abra", Tipo.PSIQUICO, null, 25, 20, 0, 0,0);  
+    public Abra(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado) {
+        super("Abra", Tipo.PSIQUICO, null, 25, 20, null);  
     }
 
     @Override

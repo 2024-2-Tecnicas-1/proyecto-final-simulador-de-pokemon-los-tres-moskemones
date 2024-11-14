@@ -4,8 +4,8 @@ import simulador.batalla.Batalla;
 
 public class Ponyta extends Pokemon {
     
-    public Ponyta(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, int exp, int level, int energia) {
-        super("Ponyta", Tipo.FUEGO, null, 100, 50, 0, 0,0);  
+    public Ponyta(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado) {
+        super("Ponyta", Tipo.FUEGO, null, 100, 50, null);  
     }
 
     @Override
