@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import simulador.pokemon.Pokemon;
 
 public class Entrenador {
-   private String nombre;
+    public String nombre;
     private ArrayList<Pokemon> equipo;
 
     public Entrenador(String nombre) {
