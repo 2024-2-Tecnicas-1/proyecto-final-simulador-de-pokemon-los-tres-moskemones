@@ -26,36 +26,55 @@ public class Batalla {
             }
         }
     
-    public static double obtenerMultiplicadorDeDaño(Tipo tipoAtacante, Tipo tipoDefensor) {
-        if (tipoAtacante == Tipo.FUEGO) {
-            if (tipoDefensor == Tipo.PLANTA) return 2.0;
-            if (tipoDefensor == Tipo.AGUA) return 0.5;
-            if (tipoDefensor == Tipo.FUEGO) return 0.5;
-        } else if (tipoAtacante == Tipo.AGUA) {
-            if (tipoDefensor == Tipo.FUEGO) return 2.0;
-            if (tipoDefensor == Tipo.PLANTA) return 0.5;
-            if (tipoDefensor == Tipo.AGUA) return 0.5;
-        } else if (tipoAtacante == Tipo.PLANTA) {
-            if (tipoDefensor == Tipo.AGUA) return 2.0;
-            if (tipoDefensor == Tipo.FUEGO) return 0.5;
-            if (tipoDefensor == Tipo.PLANTA) return 0.5;
+        public static double obtenerMultiplicadorDeDaño(Tipo tipoAtacantePrimario, Tipo tipoAtacanteSecundario, Tipo tipoDefensorPrimario, Tipo tipoDefensorSecundario) {
+            double multiplicador = 1.0;
+            
+            multiplicador *= obtenerMultiplicadorPorTipo(tipoAtacantePrimario, tipoDefensorPrimario);
+            multiplicador *= obtenerMultiplicadorPorTipo(tipoAtacantePrimario, tipoDefensorSecundario);
+            multiplicador *= obtenerMultiplicadorPorTipo(tipoAtacanteSecundario, tipoDefensorPrimario);
+            multiplicador *= obtenerMultiplicadorPorTipo(tipoAtacanteSecundario, tipoDefensorSecundario);
+        
+            return multiplicador;
         }
-        return 1.0;
-    }
-    
-    public static void HacerDaño(Pokemon atacante, Pokemon defensor) {
-        double multiplicador = obtenerMultiplicadorDeDaño(atacante.getTipoPrimario(), defensor.getTipoPrimario());
-        int daño = (int) (atacante.getAtaque() * multiplicador);
-        if(defensor.getSalud() > daño){
-            defensor.setSalud(defensor.getSalud() - daño);
-            System.out.println("Daño causado: " + daño);
-            System.out.println("Salud restante de " + defensor.getNombre() + ": " + defensor.getSalud());
+        
+        private static double obtenerMultiplicadorPorTipo(Tipo tipoAtacante, Tipo tipoDefensor) {
+            if (tipoAtacante == Tipo.FUEGO) {
+                if (tipoDefensor == Tipo.PLANTA) return 2.0;
+                if (tipoDefensor == Tipo.AGUA) return 0.5;
+                if (tipoDefensor == Tipo.FUEGO) return 0.5;
+            } else if (tipoAtacante == Tipo.AGUA) {
+                if (tipoDefensor == Tipo.FUEGO) return 2.0;
+                if (tipoDefensor == Tipo.PLANTA) return 0.5;
+                if (tipoDefensor == Tipo.AGUA) return 0.5;
+            } else if (tipoAtacante == Tipo.PLANTA) {
+                if (tipoDefensor == Tipo.AGUA) return 2.0;
+                if (tipoDefensor == Tipo.FUEGO) return 0.5;
+                if (tipoDefensor == Tipo.PLANTA) return 0.5;
+            }
+            return 1.0;
         }
-        else {defensor.setSalud(0);
-            System.out.println(defensor.getNombre()+" ha muerto.");
-
+        
+        public static void HacerDaño(Pokemon atacante, Pokemon defensor) {
+            // Considerar los tipos primarios y secundarios para ambos Pokémon
+            double multiplicador = obtenerMultiplicadorDeDaño(
+                atacante.getTipoPrimario(), 
+                atacante.getTipoSecundario(), 
+                defensor.getTipoPrimario(), 
+                defensor.getTipoSecundario()
+            );
+            
+            // Calcular el daño usando el multiplicador
+            int daño = (int) (atacante.getAtaque() * multiplicador);
+            
+            // Verificar si el defensor tiene suficiente salud
+            if(defensor.getSalud() > daño){
+                defensor.setSalud(defensor.getSalud() - daño);
+                System.out.println("Daño causado: " + daño);
+                System.out.println("Salud restante de " + defensor.getNombre() + ": " + defensor.getSalud());
+            } else {
+                defensor.setSalud(0);
+                System.out.println(defensor.getNombre() + " ha muerto.");
+            }
         }
-    }
-
 
 }

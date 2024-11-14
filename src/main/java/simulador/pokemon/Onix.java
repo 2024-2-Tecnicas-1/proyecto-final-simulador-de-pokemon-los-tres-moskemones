@@ -6,7 +6,7 @@ public class Onix extends Pokemon {
     }
 
     @Override
-    public void atacar(Pokemon pokemon) {
-        System.out.println(this.getNombre() + " ataca a " + pokemon.getNombre() + " con un ataque de tipo " + this.getTipoPrimario());
+    public void atacar(Pokemon TargetPokemon) {
+        System.out.println(this.getNombre() + " ataca a " + TargetPokemon.getNombre() + " con un ataque de tipo " + this.getTipoPrimario());
     }
 }

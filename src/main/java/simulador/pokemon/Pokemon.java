@@ -67,6 +67,6 @@ public abstract class Pokemon {
         this.estado = estado;
     }
 
-    public abstract void atacar(Pokemon pokemon);
+    public abstract void atacar(Pokemon TargetPokemon);
 
 }
