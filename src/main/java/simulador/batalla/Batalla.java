@@ -20,9 +20,9 @@ public class Batalla {
             }
     
             if (pokemon1.getSalud() <= 0) {
-                System.out.println(pokemon2.getNombre() + " gana la batalla!");
+                System.out.println(pokemon2.getNombre() + " gana la batalla");
             } else {
-                System.out.println(pokemon1.getNombre() + " gana la batalla!");
+                System.out.println(pokemon1.getNombre() + " gana la batalla");
             }
         }
     

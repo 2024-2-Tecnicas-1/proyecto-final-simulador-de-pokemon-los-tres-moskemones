@@ -154,23 +154,23 @@ public class Principal {
     private static void verEntrenadores() {
         System.out.println("\nLista de Entrenadores:");
         for (Entrenador entrenador : entrenadores) {
-            System.out.println(entrenador);
+            System.out.println(entrenador.getNombre());
         }
     }
 
-    private static void seleccionarEntrenador() {
-        System.out.println("\nSelecciona un Entrenador:");
-        for (int i = 0; i < entrenadores.size(); i++) {
-            System.out.println((i + 1) + ". " + entrenadores.get(i));
+        private static void seleccionarEntrenador() {
+            System.out.println("\nSelecciona un Entrenador:");
+            for (int i = 0; i < entrenadores.size(); i++) {
+                System.out.println((i + 1) + ". " + entrenadores.get(i));
+            }
+            int seleccion = scanner.nextInt();
+            scanner.nextLine();  
         }
-        int seleccion = scanner.nextInt();
-        scanner.nextLine();  
-    }
 
     private static void verPokemones() {
         System.out.println("\nLista de Pokémones registrados:");
         for (Pokemon pokemon : pokemones) {
-            System.out.println(pokemon);
+            System.out.println(pokemon.getNombre());
         }
     }
 
@@ -204,7 +204,7 @@ public class Principal {
     
         if (pokemon != null) {
             pokemones.add(pokemon);
-            System.out.println("Pokémon registrado con éxito: " + pokemon);
+            System.out.println("Pokémon registrado con éxito: " + pokemon.getNombre());
         } else {
             System.out.println("No se ha encontrado un Pokémon con ese nombre.");
         }
