@@ -15,6 +15,7 @@ import simulador.pokemon.Ekans;
 import simulador.pokemon.Tipo;
 import java.util.Scanner;
 import java.util.ArrayList;
+import simulador.batalla.Batalla;
 
 public class Principal {
     private static ArrayList<Entrenador> entrenadores = new ArrayList<>();
@@ -28,6 +29,7 @@ public class Principal {
 
     public static void main(String[] args) {
         while (true) {
+            System.out.println("Bienvenido al Simulador de Pokémon.");
             System.out.println("\nMenú Principal");
             System.out.println("1. Gestionar Entrenadores");
             System.out.println("2. Gestionar Pokémones");
@@ -135,12 +137,26 @@ public class Principal {
                 seleccionarEntrenador2();
                 break;
             case 3:
-                seleccionarPokemon(entrenador1);
+                if (entrenador1 == null){
+                    System.out.println("Tienes que seleccionar el entrenador 1 antes de elegir un Pokémon.");
+                } else {
+                    seleccionarPokemon(entrenador1);
+                }
                 break;
             case 4:
-                seleccionarPokemon(entrenador2);
+                if (entrenador2 == null){
+                    System.out.println("Tienes que seleccionar el entrenador 2 antes de elegir un Pokémon.");
+                } else {
+                    seleccionarPokemon(entrenador2);
+                }
                 break;
             case 5:
+                if (entrenador1 != null && entrenador2 != null && pokemon1 != null && pokemon2 != null) {
+                Batalla batalla = new Batalla(pokemon1, pokemon2);
+                batalla.iniciarBatalla();
+                } else {
+                    System.out.println("Debes seleccionar ambos entrenadores y sus Pokémon antes de iniciar la batalla.");
+                }   
                 break;
             case 6:
                 return;
