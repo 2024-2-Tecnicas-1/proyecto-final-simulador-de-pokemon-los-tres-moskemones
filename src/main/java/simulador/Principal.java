@@ -16,13 +16,13 @@ import simulador.pokemon.Tipo;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Principal {
     private static ArrayList<Entrenador> entrenadores = new ArrayList<>();
     private static ArrayList<Pokemon> pokemones = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
+
+    private static Entrenador entrenador1;
+    private static Entrenador entrenador2;
 
     public static void main(String[] args) {
         while (true) {
@@ -33,7 +33,7 @@ public class Principal {
             System.out.println("4. Salir");
             System.out.print("Elige una opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -63,7 +63,7 @@ public class Principal {
             System.out.println("4. Volver al menú principal");
             System.out.print("Elige una opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine();  
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -91,7 +91,7 @@ public class Principal {
             System.out.println("3. Volver al menú principal");
             System.out.print("Elige una opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine();  
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -123,13 +123,14 @@ public class Principal {
         System.out.println("6. Volver al menú principal");
         System.out.print("Elige una opción: ");
         int opcion = scanner.nextInt();
-        scanner.nextLine();  
+        scanner.nextLine();
 
         switch (opcion) {
             case 1:
-                // DEPENDE NUMERO DE ENTRENADORES, SE PONEN EN ESTE MENU
+                seleccionarEntrenador1();
                 break;
             case 2:
+                seleccionarEntrenador2();
                 break;
             case 3:
                 break;
@@ -158,14 +159,14 @@ public class Principal {
         }
     }
 
-        private static void seleccionarEntrenador() {
-            System.out.println("\nSelecciona un Entrenador:");
-            for (int i = 0; i < entrenadores.size(); i++) {
-                System.out.println((i + 1) + ". " + entrenadores.get(i));
-            }
-            int seleccion = scanner.nextInt();
-            scanner.nextLine();  
+    private static void seleccionarEntrenador() {
+        System.out.println("\nSelecciona un Entrenador:");
+        for (int i = 0; i < entrenadores.size(); i++) {
+            System.out.println((i + 1) + ". " + entrenadores.get(i).getNombre());
         }
+        int seleccion = scanner.nextInt();
+        scanner.nextLine();
+    }
 
     private static void verPokemones() {
         System.out.println("\nLista de Pokémones registrados:");
@@ -174,12 +175,35 @@ public class Principal {
         }
     }
 
+    private static void seleccionarEntrenador1() {
+        System.out.println("Selecciona el Entrenador #1:");
+        for (int i = 0; i < entrenadores.size(); i++) {
+            System.out.println((i + 1) + ". " + entrenadores.get(i).getNombre());
+        }
+        int seleccion = scanner.nextInt();
+        scanner.nextLine();
+        entrenador1 = entrenadores.get(seleccion - 1);
+        System.out.println("Has seleccionado el Entrenador 1: " + entrenador1.getNombre());
+    }
+
+    private static void seleccionarEntrenador2() {
+        System.out.println("Selecciona el Entrenador #2:");
+        for (int i = 0; i < entrenadores.size(); i++) {
+            System.out.println((i + 1) + ". " + entrenadores.get(i).getNombre());
+        }
+        int seleccion = scanner.nextInt();
+        scanner.nextLine();
+        entrenador2 = entrenadores.get(seleccion - 1);
+        System.out.println("Has seleccionado el Entrenador 2: " + entrenador2.getNombre());
+    }
+
     private static void registrarPokemon() {
         System.out.print("Nombre del Pokémon: ");
         String nombre = scanner.nextLine();
-       
+
         Pokemon pokemon = null;
-        
+
+
         if (nombre.equalsIgnoreCase("Ponyta")) {
             pokemon = new Ponyta(nombre, Tipo.FUEGO, null, 50, 85, null);
         } else if (nombre.equalsIgnoreCase("Staryu")) {
@@ -201,7 +225,7 @@ public class Principal {
         } else if (nombre.equalsIgnoreCase("Ekans")) {
             pokemon = new Ekans(nombre, Tipo.VENENO, null, 35, 60, null);
         }
-    
+
         if (pokemon != null) {
             pokemones.add(pokemon);
             System.out.println("Pokémon registrado con éxito: " + pokemon.getNombre());
