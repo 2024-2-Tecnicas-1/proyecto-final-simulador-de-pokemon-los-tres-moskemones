@@ -5,6 +5,7 @@ import simulador.pokemon.Ponyta;
 import simulador.pokemon.Staryu;
 import simulador.pokemon.Bellsprout;
 import simulador.pokemon.Magnemite;
+import simulador.entrenador.Entrenador;
 import simulador.pokemon.Abra;
 import simulador.pokemon.Onix;
 import simulador.pokemon.Doduo;
@@ -15,87 +16,197 @@ import simulador.pokemon.Tipo;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Principal {
+    private static ArrayList<Entrenador> entrenadores = new ArrayList<>();
+    private static ArrayList<Pokemon> pokemones = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner lector = new Scanner(System.in);
-        ArrayList<Pokemon> seleccionados = new ArrayList<>();
-        
-        for (int i = 0; i < 3; ) { 
-            System.out.println("Selecciona tu Pokémon (" + (i + 1) + "/3):");
-            System.out.println("1. Ponyta");
-            System.out.println("2. Staryu");
-            System.out.println("3. Bellsprout");
-            System.out.println("4. Magnemite");
-            System.out.println("5. Abra");
-            System.out.println("6. Onix");
-            System.out.println("7. Doduo");
-            System.out.println("8. Meowth");
-            System.out.println("9. Machop");
-            System.out.println("10. Ekans");
-            System.out.println("0. Finalizar selección");
+        while (true) {
+            System.out.println("\nMenú Principal");
+            System.out.println("1. Gestionar Entrenadores");
+            System.out.println("2. Gestionar Pokémones");
+            System.out.println("3. Iniciar Batalla");
+            System.out.println("4. Salir");
+            System.out.print("Elige una opción: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); 
 
-            int opcion = lector.nextInt();
-
-            if (opcion == 0) {
-                break; 
-            }
-            Pokemon pokemonSeleccionado = null;
             switch (opcion) {
                 case 1:
-                    pokemonSeleccionado = new Ponyta("Ponyta", Tipo.FUEGO, null, 100, 50, null);
+                    gestionarEntrenadores();
                     break;
                 case 2:
-                    pokemonSeleccionado = new Staryu("Staryu", Tipo.AGUA, null, 80, 40, null);
+                    gestionarPokemones();
                     break;
                 case 3:
-                    pokemonSeleccionado = new Bellsprout("Bellsprout", Tipo.PLANTA, Tipo.VENENO, 50, 75, null);
+                    iniciarBatalla();
                     break;
                 case 4:
-                    pokemonSeleccionado = new Magnemite("Magnemite", Tipo.ELECTRICO, Tipo.ACERO, 25, 35,null);
-                    break;
-                case 5:
-                    pokemonSeleccionado = new Abra("Abra", Tipo.PSIQUICO, null, 25, 20, null);
-                    break;
-                case 6:
-                    pokemonSeleccionado = new Onix("Onix", Tipo.ROCA, Tipo.TIERRA, 35, 45, null);
-                    break;
-                case 7:
-                    pokemonSeleccionado = new Doduo("Doduo", Tipo.NORMAL, Tipo.VOLADOR, 35, 85, null);
-                    break;
-                case 8:
-                    pokemonSeleccionado = new Meowth("Meowth", Tipo.NORMAL, null, 40, 45, null);
-                    break;
-                case 9:
-                    pokemonSeleccionado = new Machop("Machop", Tipo.LUCHA, null, 70, 80, null);
-                    break;
-                case 10:
-                    pokemonSeleccionado = new Ekans("Ekans", Tipo.VENENO, null, 365, 60, null);
-                    break;
+                    System.out.println("Bye");
+                    return;
                 default:
-                    System.out.println("Selección no válida.");
-                    continue;
-            }
-
-            boolean yaSeleccionado = false;
-            for (Pokemon p : seleccionados) {
-                if (p.getNombre().equals(pokemonSeleccionado.getNombre())) {
-                    yaSeleccionado = true;
-                    break;
-                }
-            }
-
-            if (yaSeleccionado) {
-                System.out.println("Ya se eligió a " + pokemonSeleccionado.getNombre() + ", elige otro.");
-            } else {
-                seleccionados.add(pokemonSeleccionado); 
-                System.out.println("Has elegido a " + pokemonSeleccionado.getNombre());
-                i++;  
+                    System.out.println("Opción no válida.");
             }
         }
-        lector.close();
-        System.out.println("\nPokémon seleccionados:");
-        for (Pokemon p : seleccionados) {
-            System.out.println(p.getNombre());
+    }
+
+    private static void gestionarEntrenadores() {
+        while (true) {
+            System.out.println("\nGestionar Entrenadores");
+            System.out.println("1. Registrar nuevo entrenador");
+            System.out.println("2. Ver lista de entrenadores");
+            System.out.println("3. Seleccionar un entrenador");
+            System.out.println("4. Volver al menú principal");
+            System.out.print("Elige una opción: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine();  
+
+            switch (opcion) {
+                case 1:
+                    registrarEntrenador();
+                    break;
+                case 2:
+                    verEntrenadores();
+                    break;
+                case 3:
+                    seleccionarEntrenador();
+                    break;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+    }
+
+    private static void gestionarPokemones() {
+        while (true) {
+            System.out.println("\nGestionar Pokémones");
+            System.out.println("1. Ver todos los Pokémones registrados");
+            System.out.println("2. Registrar nuevo Pokémon");
+            System.out.println("3. Volver al menú principal");
+            System.out.print("Elige una opción: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine();  
+
+            switch (opcion) {
+                case 1:
+                    verPokemones();
+                    break;
+                case 2:
+                    registrarPokemon();
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+    }
+
+    private static void iniciarBatalla() {
+        if (entrenadores.size() < 2) {
+            System.out.println("No hay suficientes entrenadores para comenzar una batalla");
+            return;
+        }
+
+        System.out.println("\nIniciar Batalla");
+        System.out.println("1. Elegir entrenador 1");
+        System.out.println("2. Elegir entrenador 2");
+        System.out.println("3. Seleccionar Pokémon de entrenador 1");
+        System.out.println("4. Seleccionar Pokémon de entrenador 2");
+        System.out.println("5. Comenzar batalla");
+        System.out.println("6. Volver al menú principal");
+        System.out.print("Elige una opción: ");
+        int opcion = scanner.nextInt();
+        scanner.nextLine();  
+
+        switch (opcion) {
+            case 1:
+                // DEPENDE NUMERO DE ENTRENADORES, SE PONEN EN ESTE MENU
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                return;
+            default:
+                System.out.println("Opción no válida.");
+        }
+    }
+
+    private static void registrarEntrenador() {
+        System.out.print("Nombre del Entrenador: ");
+        String nombre = scanner.nextLine();
+        entrenadores.add(new Entrenador(nombre));
+        System.out.println("Entrenador registrado con éxito.");
+    }
+
+    private static void verEntrenadores() {
+        System.out.println("\nLista de Entrenadores:");
+        for (Entrenador entrenador : entrenadores) {
+            System.out.println(entrenador);
+        }
+    }
+
+    private static void seleccionarEntrenador() {
+        System.out.println("\nSelecciona un Entrenador:");
+        for (int i = 0; i < entrenadores.size(); i++) {
+            System.out.println((i + 1) + ". " + entrenadores.get(i));
+        }
+        int seleccion = scanner.nextInt();
+        scanner.nextLine();  
+    }
+
+    private static void verPokemones() {
+        System.out.println("\nLista de Pokémones registrados:");
+        for (Pokemon pokemon : pokemones) {
+            System.out.println(pokemon);
+        }
+    }
+
+    private static void registrarPokemon() {
+        System.out.print("Nombre del Pokémon: ");
+        String nombre = scanner.nextLine();
+       
+        Pokemon pokemon = null;
+        
+        if (nombre.equalsIgnoreCase("Ponyta")) {
+            pokemon = new Ponyta(nombre, Tipo.FUEGO, null, 50, 85, null);
+        } else if (nombre.equalsIgnoreCase("Staryu")) {
+            pokemon = new Staryu(nombre, Tipo.AGUA, null, 30, 45, null);
+        } else if (nombre.equalsIgnoreCase("Bellsprout")) {
+            pokemon = new Bellsprout(nombre, Tipo.PLANTA, Tipo.VENENO, 50, 75, null);
+        } else if (nombre.equalsIgnoreCase("Magnemite")) {
+            pokemon = new Magnemite(nombre, Tipo.ELECTRICO, Tipo.ACERO, 25, 35, null);
+        } else if (nombre.equalsIgnoreCase("Abra")) {
+            pokemon = new Abra(nombre, Tipo.PSIQUICO, null, 25, 20, null);
+        } else if (nombre.equalsIgnoreCase("Onix")) {
+            pokemon = new Onix(nombre, Tipo.ROCA, Tipo.TIERRA, 35, 45  , null);
+        } else if (nombre.equalsIgnoreCase("Doduo")) {
+            pokemon = new Doduo(nombre, Tipo.NORMAL, Tipo.VOLADOR, 35, 85, null);
+        } else if (nombre.equalsIgnoreCase("Meowth")) {
+            pokemon = new Meowth(nombre, Tipo.NORMAL, null, 40, 45, null);
+        } else if (nombre.equalsIgnoreCase("Machop")) {
+            pokemon = new Machop(nombre, Tipo.LUCHA, null, 70, 80, null);
+        } else if (nombre.equalsIgnoreCase("Ekans")) {
+            pokemon = new Ekans(nombre, Tipo.VENENO, null, 35, 60, null);
+        }
+    
+        if (pokemon != null) {
+            pokemones.add(pokemon);
+            System.out.println("Pokémon registrado con éxito: " + pokemon);
+        } else {
+            System.out.println("No se ha encontrado un Pokémon con ese nombre.");
         }
     }
 }
