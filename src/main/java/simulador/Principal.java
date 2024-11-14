@@ -23,6 +23,8 @@ public class Principal {
 
     private static Entrenador entrenador1;
     private static Entrenador entrenador2;
+    private static Pokemon pokemon1;
+    private static Pokemon pokemon2;
 
     public static void main(String[] args) {
         while (true) {
@@ -133,8 +135,10 @@ public class Principal {
                 seleccionarEntrenador2();
                 break;
             case 3:
+                seleccionarPokemon(entrenador1);
                 break;
             case 4:
+                seleccionarPokemon(entrenador2);
                 break;
             case 5:
                 break;
@@ -195,6 +199,24 @@ public class Principal {
         scanner.nextLine();
         entrenador2 = entrenadores.get(seleccion - 1);
         System.out.println("Has seleccionado el Entrenador 2: " + entrenador2.getNombre());
+    }
+
+    private static void seleccionarPokemon(Entrenador entrenador) {
+        System.out.println("\nSelecciona un Pokémon para " + entrenador.getNombre() + ":");
+        for (int i = 0; i < pokemones.size(); i++) {
+            System.out.println((i + 1) + ". " + pokemones.get(i).getNombre());
+        }
+        int seleccion = scanner.nextInt();
+        scanner.nextLine();
+
+        Pokemon pokemonSeleccionado = pokemones.get(seleccion - 1);
+        System.out.println("Se ha seleccionado el Pokémon " + pokemonSeleccionado.getNombre() + " para el entrenador " + entrenador.getNombre());
+
+        if (entrenador == entrenador1) {
+            pokemon1 = pokemonSeleccionado;
+        } else if (entrenador == entrenador2) {
+            pokemon2 = pokemonSeleccionado;
+        }
     }
 
     private static void registrarPokemon() {
