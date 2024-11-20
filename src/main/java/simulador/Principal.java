@@ -19,6 +19,7 @@ import simulador.batalla.Batalla;
 import simulador.pokemon.*;
 
 public class Principal {
+
     private static ArrayList<Entrenador> entrenadores = new ArrayList<>();
     private static ArrayList<Pokemon> pokemones = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
@@ -138,14 +139,14 @@ public class Principal {
                 seleccionarEntrenador2();
                 break;
             case 3:
-                if (entrenador1 == null){
+                if (entrenador1 == null) {
                     System.out.println("Tienes que seleccionar el entrenador 1 antes de elegir un Pokémon.");
                 } else {
                     seleccionarPokemon(entrenador1);
                 }
                 break;
             case 4:
-                if (entrenador2 == null){
+                if (entrenador2 == null) {
                     System.out.println("Tienes que seleccionar el entrenador 2 antes de elegir un Pokémon.");
                 } else {
                     seleccionarPokemon(entrenador2);
@@ -153,11 +154,11 @@ public class Principal {
                 break;
             case 5:
                 if (entrenador1 != null && entrenador2 != null && pokemon1 != null && pokemon2 != null) {
-                Batalla batalla = new Batalla(pokemon1, pokemon2);
-                batalla.iniciarBatalla();
+                    Batalla batalla = new Batalla(pokemon1, pokemon2);
+                    batalla.iniciarBatalla();
                 } else {
                     System.out.println("Debes seleccionar ambos entrenadores y sus Pokémon antes de iniciar la batalla.");
-                }   
+                }
                 break;
             case 6:
                 return;
@@ -247,7 +248,6 @@ public class Principal {
 
         Pokemon pokemon = null;
 
-
         if (nombre.equalsIgnoreCase("Ponyta")) {
             pokemon = new Ponyta(nombre, Tipo.FUEGO, null, 50, 85, null);
         } else if (nombre.equalsIgnoreCase("Staryu")) {
@@ -259,11 +259,11 @@ public class Principal {
         } else if (nombre.equalsIgnoreCase("Abra")) {
             pokemon = new Abra(nombre, Tipo.PSIQUICO, null, 25, 20, null);
         } else if (nombre.equalsIgnoreCase("Onix")) {
-            pokemon = new Onix(nombre, Tipo.ROCA, Tipo.TIERRA, 35, 45  , null);
+            pokemon = new Onix(nombre, Tipo.ROCA, Tipo.TIERRA, 35, 45, null);
         } else if (nombre.equalsIgnoreCase("Doduo")) {
             pokemon = new Doduo(nombre, Tipo.NORMAL, Tipo.VOLADOR, 35, 85, null);
         } else if (nombre.equalsIgnoreCase("Meowth")) {
-            pokemon = new Meowth(nombre, Tipo.NORMAL, null, 40, 45, null);
+            pokemon = new Meowth();
         } else if (nombre.equalsIgnoreCase("Machop")) {
             pokemon = new Machop(nombre, Tipo.LUCHA, null, 70, 80, null);
         } else if (nombre.equalsIgnoreCase("Ekans")) {
