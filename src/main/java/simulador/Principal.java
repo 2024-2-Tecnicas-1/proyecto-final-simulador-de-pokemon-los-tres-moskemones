@@ -257,7 +257,7 @@ public class Principal {
         } else if (nombre.equalsIgnoreCase("Magnemite")) {
             pokemon = new Magnemite(nombre, Tipo.ELECTRICO, Tipo.ACERO, 25, 35, null);
         } else if (nombre.equalsIgnoreCase("Abra")) {
-            pokemon = new Abra(nombre, Tipo.PSIQUICO, null, 25, 20, null);
+            pokemon = new Abra();
         } else if (nombre.equalsIgnoreCase("Onix")) {
             pokemon = new Onix(nombre, Tipo.ROCA, Tipo.TIERRA, 35, 45, null);
         } else if (nombre.equalsIgnoreCase("Doduo")) {
