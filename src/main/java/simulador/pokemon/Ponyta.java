@@ -1,6 +1,5 @@
 package simulador.pokemon;
 
-import simulador.batalla.Batalla;
 
 public class Ponyta extends Pokemon {
     
@@ -11,6 +10,5 @@ public class Ponyta extends Pokemon {
     @Override
     public void atacar(Pokemon TargetPokemon) {
         System.out.println(this.getNombre() + " ataca a " + TargetPokemon.getNombre() + " con un ataque de tipo " + this.getTipoPrimario());
-        Batalla.HacerDaño(this, TargetPokemon);
     }
 }

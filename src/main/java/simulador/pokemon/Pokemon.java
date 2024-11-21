@@ -1,6 +1,5 @@
 package simulador.pokemon;
 
-import java.util.List;
 
 public abstract class Pokemon {
     private String nombre;
@@ -9,17 +8,15 @@ public abstract class Pokemon {
     private int salud;
     private int ataque;
     private String estado;
-    private Ataque[] tipoAtaques;
  
 
-    public Pokemon(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado, Ataque[] tipoAtaques) {
+    public Pokemon(String nombre, Tipo tipoPrimario, Tipo tipoSecundario, int salud, int ataque, String estado) {
         this.nombre = nombre;
         this.tipoPrimario = tipoPrimario;
         this.tipoSecundario = tipoSecundario;
         this.salud = salud;
         this.ataque = ataque;
         this.estado = estado;
-        this.tipoAtaques = tipoAtaques;
  
     }
 
@@ -72,9 +69,18 @@ public abstract class Pokemon {
     }
 
     public abstract void atacar(Pokemon TargetPokemon);
-
-    public Ataque[] getTipoAtaques() {
-        return tipoAtaques;
+    
+    public void RecibirDano(int Dano){
+        if (this.salud > Dano){
+        this.salud -= Dano;
+        }
+        else{
+            System.out.println(this.nombre+" ha muerto.");
+        }
+    }
+    public void Entrenar(){
+        this.salud += 3;
+        this.ataque += 1;
     }
 
 }
