@@ -13,13 +13,14 @@ public class Principal {
 
     private static ArrayList<Entrenador> entrenadores = new ArrayList<>();
     private static ArrayList<Pokemon> pokemones = new ArrayList<>();
+    private static List<Pokemon> pokemonesDisponibles = new ArrayList<>();
+
     private static Scanner scanner = new Scanner(System.in);
 
     private static Entrenador entrenador1;
     private static Entrenador entrenador2;
     private static Pokemon pokemon1;
     private static Pokemon pokemon2;
-private static List<Pokemon> pokemonesDisponibles = new ArrayList<>();
 
 static {
     pokemonesDisponibles.add(new Ponyta("Ponyta", Tipo.FUEGO, null, 50, 85, null));
@@ -247,6 +248,12 @@ static {
         if (entrenadores.size() < 2) {
             System.out.println("No hay suficientes entrenadores para comenzar una batalla");
             return;
+        }
+        for (int i = 0; i < entrenadores.size(); i++) {
+            if (entrenadores.get(i).getEquipo().size() < 1) {
+                System.out.println("No hay Pokémon registrados en el equipo del entrenador " + entrenadores.get(i).getNombre());
+                return;
+            }
         }
     
         int opcion;
