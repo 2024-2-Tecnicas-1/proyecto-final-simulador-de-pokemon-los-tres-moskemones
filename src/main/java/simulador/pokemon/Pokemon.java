@@ -79,6 +79,7 @@ public abstract class Pokemon {
         }
     }
     public void Entrenar(){
+        System.out.println(this.nombre+" Ha sido entrenado, +3 salud y +1 ataque.");
         this.salud += 3;
         this.ataque += 1;
     }
